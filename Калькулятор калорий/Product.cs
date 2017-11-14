@@ -8,5 +8,12 @@ namespace Калькулятор_калорий
 {
     class Product
     {
+        public string name;
+        public float kall;
+        public float belki;
+        public float zhiry;
+        public float uglevody;
+
+       
     }
 }
