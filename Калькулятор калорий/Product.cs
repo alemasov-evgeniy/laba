@@ -22,5 +22,10 @@ namespace Калькулятор_калорий
             this.zhiry = zhiry;
             this.uglevody = uglevody;
         }
+
+        float getKolvoElementovNaVes(float ves,float elNa100gr)
+        {
+            return elNa100gr / 100 * ves;
+        }
     }
 }
