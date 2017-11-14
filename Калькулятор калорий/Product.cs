@@ -23,9 +23,14 @@ namespace Калькулятор_калорий
             this.uglevody = uglevody;
         }
 
-        float getKolvoElementovNaVes(float ves,float elNa100gr)
+        public float getKolvoElementovNaVes(float ves,float elNa100gr)
         {
             return elNa100gr / 100 * ves;
+        }
+
+        override public string ToString()
+        {
+            return name;
         }
     }
 }
