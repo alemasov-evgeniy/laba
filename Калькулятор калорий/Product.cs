@@ -14,6 +14,13 @@ namespace Калькулятор_калорий
         public float zhiry;
         public float uglevody;
 
-       
+        public Product(string name, float kall, float belki, float zhiry, float uglevody)
+        {
+            this.name = name;
+            this.kall = kall;
+            this.belki = belki;
+            this.zhiry = zhiry;
+            this.uglevody = uglevody;
+        }
     }
 }
