@@ -13,6 +13,7 @@ namespace Калькулятор_калорий
         public float belki;
         public float zhiry;
         public float uglevody;
+        public int ves;
 
         public Product(string name, float kall, float belki, float zhiry, float uglevody)
         {
@@ -23,9 +24,14 @@ namespace Калькулятор_калорий
             this.uglevody = uglevody;
         }
 
-        public float getKolvoElementovNaVes(float ves,float elNa100gr)
+        public float getKolvoElementovNaVes(int ves,float elNa100gr)
         {
             return elNa100gr / 100 * ves;
+        }
+
+        public float getKall()
+        {
+            return getKolvoElementovNaVes(ves, kall);
         }
 
         override public string ToString()
