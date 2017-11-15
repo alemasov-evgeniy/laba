@@ -51,5 +51,10 @@ namespace Калькулятор_калорий
         {
             updateProduct();
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            updateProduct();
+        }
     }
 }

@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Название = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Вес = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Калл = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Белки = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Жиры = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Углеводы = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -43,12 +49,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Название = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Вес = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Калл = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Белки = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Жиры = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Углеводы = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -91,6 +91,60 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(506, 162);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Название
+            // 
+            this.Название.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Название.HeaderText = "Название";
+            this.Название.Name = "Название";
+            this.Название.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Название.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Название.Width = 150;
+            // 
+            // Вес
+            // 
+            this.Вес.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Вес.HeaderText = "Вес";
+            this.Вес.Name = "Вес";
+            this.Вес.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Вес.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Вес.Width = 50;
+            // 
+            // Калл
+            // 
+            this.Калл.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Калл.HeaderText = "Калл";
+            this.Калл.Name = "Калл";
+            this.Калл.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Калл.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Калл.Width = 75;
+            // 
+            // Белки
+            // 
+            this.Белки.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Белки.HeaderText = "Белки";
+            this.Белки.Name = "Белки";
+            this.Белки.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Белки.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Белки.Width = 75;
+            // 
+            // Жиры
+            // 
+            this.Жиры.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Жиры.HeaderText = "Жиры";
+            this.Жиры.Name = "Жиры";
+            this.Жиры.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Жиры.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Жиры.Width = 75;
+            // 
+            // Углеводы
+            // 
+            this.Углеводы.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Углеводы.HeaderText = "Углеводы";
+            this.Углеводы.Name = "Углеводы";
+            this.Углеводы.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Углеводы.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Углеводы.Width = 75;
             // 
             // button1
             // 
@@ -150,6 +204,7 @@
             0,
             0,
             0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // comboBox1
             // 
@@ -217,60 +272,6 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Углеводы";
             this.label6.Visible = false;
-            // 
-            // Название
-            // 
-            this.Название.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Название.HeaderText = "Название";
-            this.Название.Name = "Название";
-            this.Название.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Название.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Название.Width = 150;
-            // 
-            // Вес
-            // 
-            this.Вес.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Вес.HeaderText = "Вес";
-            this.Вес.Name = "Вес";
-            this.Вес.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Вес.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Вес.Width = 50;
-            // 
-            // Калл
-            // 
-            this.Калл.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Калл.HeaderText = "Калл";
-            this.Калл.Name = "Калл";
-            this.Калл.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Калл.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Калл.Width = 75;
-            // 
-            // Белки
-            // 
-            this.Белки.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Белки.HeaderText = "Белки";
-            this.Белки.Name = "Белки";
-            this.Белки.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Белки.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Белки.Width = 75;
-            // 
-            // Жиры
-            // 
-            this.Жиры.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Жиры.HeaderText = "Жиры";
-            this.Жиры.Name = "Жиры";
-            this.Жиры.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Жиры.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Жиры.Width = 75;
-            // 
-            // Углеводы
-            // 
-            this.Углеводы.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Углеводы.HeaderText = "Углеводы";
-            this.Углеводы.Name = "Углеводы";
-            this.Углеводы.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Углеводы.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Углеводы.Width = 75;
             // 
             // monthCalendar1
             // 
