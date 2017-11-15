@@ -38,13 +38,18 @@ namespace Калькулятор_калорий
             dataGridView1.Rows.Add(comboBox1.Text, numericUpDown1.Value, textBox2.Text, textBox3.Text, textBox4.Text, textBox1.Text);
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        void updateProduct()
         {
             selectedItem = (Product)comboBox1.Items[comboBox1.SelectedIndex];
-            textBox2.Text = selectedItem.kall + "";
+            textBox2.Text = selectedItem.getKall() + "";
             textBox3.Text = selectedItem.belki + "";
             textBox4.Text = selectedItem.zhiry + "";
             textBox1.Text = selectedItem.uglevody + "";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateProduct();
         }
     }
 }
