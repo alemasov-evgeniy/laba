@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Калькулятор_калорий
 {
@@ -19,6 +22,9 @@ namespace Калькулятор_калорий
         }
 
         Product selectedItem;
+        Dictionary<DateTime, List<Product>> tableData;
+        String pathToXMLdataTable = "../../tableData.xml";
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -31,7 +37,114 @@ namespace Калькулятор_калорий
                     (float)Convert.ToDouble(temp2[3]), (float)Convert.ToDouble(temp2[4]));
                 comboBox1.Items.Add(product);
             }
+            tableData = new Dictionary<DateTime, List<Product>>();
         }
+
+        void readTableDataFromFile()
+        {
+            if (File.Exists(pathToXMLdataTable))
+            {
+                XmlDocument xDoc = new XmlDocument();
+                xDoc.Load(pathToXMLdataTable);                XmlElement xRoot = xDoc.DocumentElement;                tableData.Clear();                foreach (XmlElement day in xRoot)
+                {
+                    DateTime dateTime = new DateTime();
+                    List<Product> list = new List<Product>();
+                    foreach (XmlElement child in day)
+                    {
+                        if (child.Name == "date")
+                        {
+                            dateTime = Convert.ToDateTime(child.InnerText);
+                        }
+                        if (child.Name == "products")
+                        {
+                            foreach (XmlElement product in child)
+                            {
+                                float kall = 0;
+                                float belki = 0;
+                                float zhiry = 0;
+                                float uglevody = 0;
+                                int ves = 0;
+                                string name = "";
+                                foreach (XmlElement pole in product)
+                                {
+                                    if (pole.Name == "name")
+                                    {
+                                        name = pole.InnerText;
+                                    }
+                                    if (pole.Name == "kall")
+                                    {
+                                        kall = (float)Convert.ToDouble(pole.InnerText);
+                                    }
+                                    if (pole.Name == "belki")
+                                    {
+                                        belki = (float)Convert.ToDouble(pole.InnerText);
+                                    }
+                                    if (pole.Name == "zhiry")
+                                    {
+                                        zhiry = (float)Convert.ToDouble(pole.InnerText);
+                                    }
+                                    if (pole.Name == "uglevody")
+                                    {
+                                        uglevody = (float)Convert.ToDouble(pole.InnerText);
+                                    }
+                                    if (pole.Name == "ves")
+                                    {
+                                        ves = Convert.ToInt32(pole.InnerText);
+                                    }
+                                }
+                                Product Xproduct = new Product(name, kall, belki, zhiry, uglevody);
+                                Xproduct.ves = ves;
+                                list.Add(Xproduct);
+                            }
+                        }
+                        tableData.Add(dateTime, list);
+                    }
+                }
+            }
+        }
+        void writeTableDataToFile()
+        {
+            XDocument xDoc = new XDocument();
+            XElement root = new XElement("days");
+            foreach (DateTime i in tableData.Keys)
+            {
+                List<Product> list = tableData[i];
+                XElement day = new XElement("day");
+                XElement date = new XElement("date");
+                date.Value = i + "";
+                XElement products = new XElement("products");
+                foreach (Product p in list)
+                {
+                    XElement product = new XElement("product");
+                    XElement name = new XElement("name");
+                    name.Value = p.name;
+                    XElement kall = new XElement("kall");
+                    kall.Value = p.kall + "";
+                    XElement belki = new XElement("belki");
+                    belki.Value = p.belki + "";
+                    XElement zhiry = new XElement("zhiry");
+                    zhiry.Value = p.zhiry + "";
+                    XElement uglevody = new XElement("uglevody");
+                    uglevody.Value = p.uglevody + "";
+                    XElement ves = new XElement("ves");
+                    ves.Value = p.ves + "";
+                    product.Add(name);
+                    product.Add(kall);
+                    product.Add(belki);
+                    product.Add(zhiry);
+                    product.Add(uglevody);
+                    product.Add(ves);
+                    products.Add(product);
+                }
+                day.Add(date);
+                day.Add(products);
+                root.Add(day);
+            }
+
+            xDoc.Add(root);
+
+            xDoc.Save(pathToXMLdataTable);     
+    }
 
         private void button1_Click(object sender, EventArgs e)
         {
