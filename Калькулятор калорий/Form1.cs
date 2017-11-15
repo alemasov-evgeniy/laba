@@ -35,7 +35,7 @@ namespace Калькулятор_калорий
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            dataGridView1.Rows.Add(comboBox1.Text, numericUpDown1.Value, textBox2.Text, textBox3.Text, textBox4.Text, textBox1.Text);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
