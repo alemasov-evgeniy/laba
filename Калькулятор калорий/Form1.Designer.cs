@@ -49,7 +49,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
@@ -65,6 +64,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -273,13 +273,6 @@
             this.label6.Text = "Углеводы";
             this.label6.Visible = false;
             // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(8, 133);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.ShowToday = false;
-            this.monthCalendar1.TabIndex = 16;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -429,6 +422,14 @@
             this.button3.Text = "Рассчитать";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(8, 133);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.ShowToday = false;
+            this.monthCalendar1.TabIndex = 16;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,7 +495,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Белки;
         private System.Windows.Forms.DataGridViewTextBoxColumn Жиры;
         private System.Windows.Forms.DataGridViewTextBoxColumn Углеводы;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label8;
@@ -510,6 +510,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
 

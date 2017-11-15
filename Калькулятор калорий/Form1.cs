@@ -30,7 +30,7 @@ namespace Калькулятор_калорий
         {
             string[] temp = File.ReadAllLines("../../калории.txt");
             comboBox1.Items.Clear();
-            for(int i=0;i<temp.Length;i++)
+            for (int i = 0; i < temp.Length; i++)
             {
                 string[] temp2 = temp[i].Split(';');
                 Product product = new Product(temp2[0], (float)Convert.ToDouble(temp2[1]), (float)Convert.ToDouble(temp2[2]),
@@ -38,6 +38,8 @@ namespace Калькулятор_калорий
                 comboBox1.Items.Add(product);
             }
             tableData = new Dictionary<DateTime, List<Product>>();
+            readTableDataFromFile();
+            updateDataGridview();
         }
 
         void readTableDataFromFile()
@@ -45,7 +47,10 @@ namespace Калькулятор_калорий
             if (File.Exists(pathToXMLdataTable))
             {
                 XmlDocument xDoc = new XmlDocument();
-                xDoc.Load(pathToXMLdataTable);                XmlElement xRoot = xDoc.DocumentElement;                tableData.Clear();                foreach (XmlElement day in xRoot)
+                xDoc.Load(pathToXMLdataTable);
+                XmlElement xRoot = xDoc.DocumentElement;
+                tableData.Clear();
+                foreach (XmlElement day in xRoot)
                 {
                     DateTime dateTime = new DateTime();
                     List<Product> list = new List<Product>();
@@ -97,8 +102,8 @@ namespace Калькулятор_калорий
                                 list.Add(Xproduct);
                             }
                         }
-                        tableData.Add(dateTime, list);
                     }
+                    tableData.Add(dateTime, list);
                 }
             }
         }
@@ -143,12 +148,40 @@ namespace Калькулятор_калорий
 
             xDoc.Add(root);
 
-            xDoc.Save(pathToXMLdataTable);     
-    }
+            xDoc.Save(pathToXMLdataTable);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(comboBox1.Text, numericUpDown1.Value, textBox2.Text, textBox3.Text, textBox4.Text, textBox1.Text);
+            addRow();
+        }
+
+        void addRow()
+        {
+            Product p = new Product(selectedItem.name, selectedItem.kall, selectedItem.belki, selectedItem.zhiry, selectedItem.uglevody);
+            p.ves = Convert.ToInt32(numericUpDown1.Value);
+            DateTime dateTime = monthCalendar1.SelectionRange.End.Date;
+            if(!tableData.ContainsKey(dateTime))
+            {
+                tableData.Add(dateTime, new List<Product>());
+            }
+            tableData[dateTime].Add(p);
+            writeTableDataToFile();
+            updateDataGridview();
+        }
+
+        void updateDataGridview()
+        {
+            DateTime dateTime = monthCalendar1.SelectionRange.End.Date;
+            dataGridView1.Rows.Clear();
+            if (tableData.ContainsKey(dateTime))
+            {
+                List<Product> list = tableData[dateTime];
+                foreach (Product p in list)
+                {
+                    dataGridView1.Rows.Add(p.name, p.ves, p.getKall(), p.getBelki(), p.getZhiry(), p.getUglevody());
+                }
+            }
         }
 
         void updateProduct()
@@ -169,6 +202,11 @@ namespace Калькулятор_калорий
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             updateProduct();
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            updateDataGridview();
         }
     }
 }
