@@ -42,9 +42,9 @@ namespace Калькулятор_калорий
         {
             selectedItem = (Product)comboBox1.Items[comboBox1.SelectedIndex];
             textBox2.Text = selectedItem.getKall() + "";
-            textBox3.Text = selectedItem.belki + "";
-            textBox4.Text = selectedItem.zhiry + "";
-            textBox1.Text = selectedItem.uglevody + "";
+            textBox3.Text = selectedItem.getBelki() + "";
+            textBox4.Text = selectedItem.getZhiry() + "";
+            textBox1.Text = selectedItem.getUglevody() + "";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

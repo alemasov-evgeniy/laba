@@ -34,6 +34,21 @@ namespace Калькулятор_калорий
             return getKolvoElementovNaVes(ves, kall);
         }
 
+        public float getBelki()
+        {
+            return getKolvoElementovNaVes(ves, belki);
+        }
+
+        public float getZhiry()
+        {
+            return getKolvoElementovNaVes(ves, zhiry);
+        }
+
+        public float getUglevody()
+        {
+            return getKolvoElementovNaVes(ves, uglevody);
+        }
+
         override public string ToString()
         {
             return name;
