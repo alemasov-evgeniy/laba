@@ -41,6 +41,7 @@ namespace Калькулятор_калорий
         void updateProduct()
         {
             selectedItem = (Product)comboBox1.Items[comboBox1.SelectedIndex];
+            selectedItem.ves = Convert.ToInt32(numericUpDown1.Value);
             textBox2.Text = selectedItem.getKall() + "";
             textBox3.Text = selectedItem.getBelki() + "";
             textBox4.Text = selectedItem.getZhiry() + "";
