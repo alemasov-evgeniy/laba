@@ -208,5 +208,13 @@ namespace Калькулятор_калорий
         {
             updateDataGridview();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell cell in dataGridView1.SelectedCells)
+            {
+                dataGridView1.Rows.RemoveAt(cell.RowIndex);
+            }
+        }
     }
 }
